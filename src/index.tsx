@@ -830,6 +830,7 @@ const ResizableImage = React.memo(
           >
             <Animated.View style={{ width, height }}>
               <TapGestureHandler
+                enabled={false}
                 ref={doubleTap}
                 onGestureEvent={singleTapHandler}
                 waitFor={tap}
@@ -838,6 +839,7 @@ const ResizableImage = React.memo(
               >
                 <Animated.View style={[{ width, height }, animatedStyle]}>
                   <TapGestureHandler
+                    enabled={false}
                     ref={tap}
                     onGestureEvent={doubleTapHandler}
                     numberOfTaps={2}
