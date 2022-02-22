@@ -126,6 +126,8 @@ type Props<T> = EventsCallbacks & {
   doubleTapScale: number;
   maxScale: number;
   pinchEnabled: boolean;
+  doubleTapEnabled: boolean;
+  singleTapEnabled: boolean;
   disableTransitionOnScaledImage: boolean;
   hideAdjacentImagesOnScaledImage: boolean;
   disableVerticalSwipe: boolean;
@@ -160,6 +162,8 @@ const ResizableImage = React.memo(
     doubleTapInterval,
     maxScale,
     pinchEnabled,
+    doubleTapEnabled,
+    singleTapEnabled,
     disableTransitionOnScaledImage,
     hideAdjacentImagesOnScaledImage,
     disableVerticalSwipe,
@@ -830,6 +834,7 @@ const ResizableImage = React.memo(
           >
             <Animated.View style={{ width, height }}>
               <TapGestureHandler
+                enabled={singleTapEnabled}
                 ref={doubleTap}
                 onGestureEvent={singleTapHandler}
                 waitFor={tap}
@@ -838,6 +843,7 @@ const ResizableImage = React.memo(
               >
                 <Animated.View style={[{ width, height }, animatedStyle]}>
                   <TapGestureHandler
+                    enabled={doubleTapEnabled}
                     ref={tap}
                     onGestureEvent={doubleTapHandler}
                     numberOfTaps={2}
