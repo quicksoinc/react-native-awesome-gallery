@@ -886,6 +886,8 @@ type GalleryProps<T> = EventsCallbacks & {
   style?: ViewStyle;
   containerDimensions?: { width: number; height: number };
   pinchEnabled?: boolean;
+  doubleTapEnabled: boolean;
+  singleTapEnabled: boolean;
   disableTransitionOnScaledImage?: boolean;
   hideAdjacentImagesOnScaledImage?: boolean;
   disableVerticalSwipe?: boolean;
@@ -906,6 +908,8 @@ const GalleryComponent = <T extends any>(
     doubleTapInterval = 500,
     maxScale = MAX_SCALE,
     pinchEnabled = true,
+    doubleTapEnabled = true,
+    singleTapEnabled = true,
     disableTransitionOnScaledImage = false,
     hideAdjacentImagesOnScaledImage = false,
     onIndexChange,
@@ -1028,6 +1032,8 @@ const GalleryComponent = <T extends any>(
                     doubleTapInterval,
                     maxScale,
                     pinchEnabled,
+                    doubleTapEnabled,
+                    singleTapEnabled,
                     disableTransitionOnScaledImage,
                     hideAdjacentImagesOnScaledImage,
                     disableVerticalSwipe,
