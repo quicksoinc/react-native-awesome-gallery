@@ -990,7 +990,20 @@ const GalleryComponent = <T extends any>(
 
   return (
     <View style={[{ flex: 1, backgroundColor: 'black' }, style]}>
-      <Animated.View style={[{ flex: 1, flexDirection: 'row' }, animatedStyle]}>
+      <Animated.View
+        style={[
+          {
+            flex: 1,
+            flexDirection: 'row',
+            // Touchables translated into view are not pressable on Android.
+            // Without setting dimensions of the tranlsated container, native
+            // video controls do not work. (https://github.com/facebook/react-native/issues/28894)
+            height: dimensions.height,
+            width: data.length * dimensions.width,
+          },
+          animatedStyle
+        ]}
+      >
         {data.map((item: any, i) => {
           const isFirst = i === 0;
 
